@@ -1,0 +1,82 @@
+* Notes about the application:
+ -It works only with independent sources. (till it's updated later)
+ -It works with AC, DC, Active & Passive elements.
+ -The only allowed element are Voltage source(Vs), Resistors(R), inductors(L), Capacitors(C), Current sources(I)
+ -You should follow the manual instructions to get the correct results.
+ -There are some test cases that may help.
+ -The application solves the given circuit and gives the Node voltages and currents in each element in complex form(Abs value and phase angle value).
+ -The Abs value will always be positive and the phase angle indicates the direction (i.e if the phase angle is 180 -> the direction is oposite to the given direction).
+ -The phase angle is given in degrees.
+ -The direction of the resulted current will be taken from the order of the given nodes (i.e if the given element is R between nodes 1, 2 -> the current will be given in the direction of 1    ->2 and if its in the opposite direction, the phase angle will be  180).
+ -The currents are given to you in the same order you give in the input file. 
+ (
+ i.e:- if the input is:
+ Vs between nodes 1 0
+ R between nodes 1, 2
+ L between nodes 1, 2
+ C between nodes 2, 0
+ Then the output will be given as:
+ I(1,0) = I(Vs)
+ I(1,2) = I(R)
+ I(1,2) = I(L)
+ I(2,0) = I(C)
+ )
+ -The voltage of the Node 0 will always be zero (we assume that node 0 is always the ground).
+*Follow these instructions:-
+1- make a (.txt) file. Name it "input" and save it in the same directory(folder) of the 
+application.
+
+2- Label each node in your circuit with an integer number ordered ascendingly from 0 to tha maximum number of nodes in your circuit (You must take into consideration that Node zero is the ground). [i.e 0,1,2,4,6 is wrong labeling but 0,1,2,3,4 is right --> it should be orderd ascendingly without missing a number in between]
+
+3- The input in the file should be written as:
+Vs 1 1 0 10 30
+L 1 1 2 .001
+C 1 2 3 0.0001
+R 1 3 0 10
+
+ -Each line indicates a single element in the circuit.
+ -Each line consists of 5 or 6 inputs separated with a single space:
+ -the first input is the Elements symbol: i.e Voltage source(Vs), Resistors(R), inductors(L), Capacitors(C), Current sources(I)
+ -The second input is the number of the element in its group:  (i.e) if the element is the first resistor then it will be 1, if it is the second it will be 2 and so on
+ -The third and the fourth inputs are the nodes that the element lies between-->third input=Node1, Fourth input=Node2.(the calculated current will be given in the order from Node1 to Node2)
+ -The fifth input is the absolute value of the element
+ -The sixth value is the phase angle. (=>if there is no phase angle don't write it)
+
+3- You will be asked to Enter The value of the angular velocity (Omega) when you open the application (=> if there is no angular velocity just enter zero)
+
+*The output will be written as:
+
+
+Node Voltages:-
+------------------------
+V(0) = (0,0) abs: 0 Phase:  0
+V(1) = (1.54251,-9.88032) abs: 10 Phase:  -81.1266
+V(2) = (1.54278,-9.8828) abs: 10.0025 Phase:  -81.1273
+V(3) = (0.496755,0.052301) abs: 0.499501 Phase:  6.01027
+----------------------------------
+Currents in each element:-
+------------------------
+I(1, 0) = (-0.0496755,-0.0052301) abs: 0.0499501 Phase: -173.99
+I(1, 2) = (0.0496755,0.0052301) abs: 0.0499501 Phase: 6.01027
+I(2, 3) = (0.0496755,0.0052301) abs: 0.0499501 Phase: 6.01027
+I(3, 0) = (0.0496755,0.0052301) abs: 0.0499501 Phase: 6.01027
+
+----------------------------------
+--------------------------------------------------------------------
+Given Elements:
+Type: 0  IDu: 1  IDg: 1  start: 1        end: 0  value: 10       alternative:  1         phase:  30
+Type: 2  IDu: 2  IDg: 1  start: 1        end: 2  value: 0.001    alternative:  0         phase:  no phase
+Type: 3  IDu: 3  IDg: 1  start: 2        end: 3  value: 0.0001   alternative:  0         phase:  no phase
+Type: 4  IDu: 4  IDg: 1  start: 3        end: 0  value: 10       alternative:  0         phase:  no phase
+----------------------------------------------------------------------------
+Given Nodes:
+Node Number(ID): 0 Connected Nodes: {1,3}        Connected Elements: {0,4}
+Node Number(ID): 1 Connected Nodes: {0,2}        Connected Elements: {0,2}
+Node Number(ID): 2 Connected Nodes: {1,3}        Connected Elements: {2,3}
+Node Number(ID): 3 Connected Nodes: {2,0}        Connected Elements: {3,4}
+ 
+ - The node voltages and currents are given in complex (real,imag) and polar abs:... phase:...
+ -The given elements and nodes are written at the bottom of the output
+ -IDu is the unique id of the element in the circuit and IDu is the group id that is given.
+ -Type is the type of the element Voltage source(Vs) = 0, Resistors(R) = 4, inductors(L) = 2, Capacitors(C) = 3, Current sources(I) = 1
+
